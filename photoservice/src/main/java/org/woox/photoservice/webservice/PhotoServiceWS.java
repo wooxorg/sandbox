@@ -10,7 +10,6 @@ import org.woox.photoservice.model.Photo;
 import org.woox.photoservice.service.PhotoServiceImpl;
 
 
-//@Path("/photoservice")
 @Path("/")
 public class PhotoServiceWS {
 

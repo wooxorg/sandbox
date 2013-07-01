@@ -1,10 +1,16 @@
 package org.woox.photoservice.model;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 
+@Document
 public class Photo {
 
+	@Id
+	private String id;
 	private String title;
+	private byte[] data;
 
 	public String getTitle() {
 		return title;
@@ -12,6 +18,14 @@ public class Photo {
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+
+	public byte[] getData() {
+		return data;
+	}
+
+	public void setData(byte[] data) {
+		this.data = data;
 	}
 	
 }

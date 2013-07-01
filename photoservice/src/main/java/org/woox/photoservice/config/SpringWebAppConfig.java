@@ -10,13 +10,16 @@ import org.apache.cxf.jaxrs.JAXRSServerFactoryBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.DependsOn;
+import org.springframework.data.mongodb.MongoDbFactory;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.SimpleMongoDbFactory;
 import org.woox.photoservice.PhotoServiceApplication;
 import org.woox.photoservice.service.PhotoService;
 import org.woox.photoservice.service.PhotoServiceImpl;
 import org.woox.photoservice.webservice.PhotoServiceWS;
 
 import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
-
+import com.mongodb.MongoClient;
 
 @Configuration
 public class SpringWebAppConfig {
@@ -24,27 +27,28 @@ public class SpringWebAppConfig {
 	public PhotoServiceApplication photoServiceApplication() {
 		return new PhotoServiceApplication();
 	}
-	
+
 	@Bean(destroyMethod = "shutdown")
 	public SpringBus cxf() {
 		return new SpringBus();
 	}
-	
+
 	@Bean
 	@DependsOn("cxf")
 	public Server jaxRsServer() {
-		JAXRSServerFactoryBean factory = RuntimeDelegate.getInstance().createEndpoint(photoServiceApplication(),JAXRSServerFactoryBean.class);
+		JAXRSServerFactoryBean factory = RuntimeDelegate.getInstance()
+				.createEndpoint(photoServiceApplication(),
+						JAXRSServerFactoryBean.class);
 		factory.setServiceBeans(Arrays.<Object> asList(photoServiceWS()));
 		factory.setAddress(factory.getAddress());
 		factory.setProviders(Arrays.<Object> asList(jsonProvider()));
 		return factory.create();
 	}
-	
+
 	@Bean
 	public JacksonJsonProvider jsonProvider() {
 		return new JacksonJsonProvider();
 	}
-	
 
 	@Bean
 	public PhotoServiceWS photoServiceWS() {
@@ -56,5 +60,15 @@ public class SpringWebAppConfig {
 		return new PhotoServiceImpl();
 	}
 
+	public @Bean
+	MongoDbFactory mongoDbFactory() throws Exception {
+		return new SimpleMongoDbFactory(new MongoClient(), "yourdb");
+	}
+
+	public @Bean
+	MongoTemplate mongoTemplate() throws Exception {
+		MongoTemplate mongoTemplate = new MongoTemplate(mongoDbFactory());
+		return mongoTemplate;
+	}
 
 }

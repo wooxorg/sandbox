@@ -12,6 +12,7 @@
 		<hibernate.version>4.2.2.Final</hibernate.version>
 		<jackson-2-version>2.2.2</jackson-2-version>
 		<cxf.version>2.7.6-SNAPSHOT</cxf.version>
+		<spring-data-mongodb-version>1.2.1.RELEASE</spring-data-mongodb-version>
 		<jetty.version>9.0.3.v20130506</jetty.version>
 	</properties>
 	<repositories>
@@ -20,9 +21,9 @@
 			<name>SpringSource Repository</name>
 			<url>http://repo.springsource.org/release</url>
 		</repository>
-		
-		
-				<repository>
+
+
+		<repository>
 			<id>apachesnap-repo</id>
 			<name>SpringSource Repository</name>
 			<url>http://repository.apache.org/snapshots</url>
@@ -32,24 +33,6 @@
 
 
 	<dependencies>
-
-		<!-- <dependency> -->
-		<!-- <groupId>org.glassfish.jersey.containers</groupId> -->
-		<!-- <artifactId>jersey-container-servlet</artifactId> -->
-		<!-- <version>2.0</version> -->
-		<!-- </dependency> -->
-		<!-- Required only when you are using JAX-RS Client -->
-		<!-- <dependency> -->
-		<!-- <groupId>org.glassfish.jersey.core</groupId> -->
-		<!-- <artifactId>jersey-client</artifactId> -->
-		<!-- <version>2.0</version> -->
-		<!-- </dependency> -->
-
-		<!-- <dependency> -->
-		<!-- <groupId>org.eclipse.jetty</groupId> -->
-		<!-- <artifactId>jetty-webapp</artifactId> -->
-		<!-- <version>${jetty.version}</version> -->
-		<!-- </dependency> -->
 
 		<dependency>
 			<groupId>javax</groupId>
@@ -89,18 +72,28 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
-
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-mongodb</artifactId>
+			<version>${spring-data-mongodb-version}</version>
+		</dependency>
 
 		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-core</artifactId>
-			<version>${hibernate.version}</version>
+			<groupId>org.mongodb</groupId>
+			<artifactId>mongo-java-driver</artifactId>
+			<version>2.11.2</version>
 		</dependency>
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-entitymanager</artifactId>
-			<version>${hibernate.version}</version>
-		</dependency>
+
+		<!-- <dependency> -->
+		<!-- <groupId>org.hibernate</groupId> -->
+		<!-- <artifactId>hibernate-core</artifactId> -->
+		<!-- <version>${hibernate.version}</version> -->
+		<!-- </dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.hibernate</groupId> -->
+		<!-- <artifactId>hibernate-entitymanager</artifactId> -->
+		<!-- <version>${hibernate.version}</version> -->
+		<!-- </dependency> -->
 
 		<dependency>
 			<groupId>org.apache.cxf</groupId>
@@ -120,49 +113,34 @@
 
 
 
-<dependency>
-	<groupId>com.fasterxml.jackson.core</groupId>
-	<artifactId>jackson-core</artifactId>
-	<version>${jackson-2-version}</version>
-</dependency>
-	<dependency>
-		<groupId>com.fasterxml.jackson.core</groupId>
-		<artifactId>jackson-databind</artifactId>
-		<version>${jackson-2-version}</version>
-	</dependency>
-	<dependency>
-		<groupId>com.fasterxml.jackson.core</groupId>
-		<artifactId>jackson-annotations</artifactId>
-		<version>${jackson-2-version}</version>
-	</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>${jackson-2-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson-2-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>${jackson-2-version}</version>
+		</dependency>
 
-	<dependency>
-		<groupId>com.fasterxml.jackson.jaxrs</groupId>
-		<artifactId>jackson-jaxrs-json-provider</artifactId>
-		<version>${jackson-2-version}</version>
-	</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.jaxrs</groupId>
+			<artifactId>jackson-jaxrs-json-provider</artifactId>
+			<version>${jackson-2-version}</version>
+		</dependency>
 
-	<dependency>
-		<groupId>com.fasterxml.jackson.jaxrs</groupId>
-		<artifactId>jackson-jaxrs-base</artifactId>
-		<version>${jackson-2-version}</version>
-	</dependency>
-<!--  		<dependency> -->
-<!-- 	<groupId>org.codehaus.jackson</groupId> -->
-<!-- 	<artifactId>jackson-core-asl</artifactId> -->
-<!-- 	<version>1.9.12</version> -->
-<!-- </dependency> -->
-            
-<!--  		<dependency> -->
-<!-- 	<groupId>org.codehaus.jackson</groupId> -->
-<!-- 	<artifactId>jackson-jaxrs</artifactId> -->
-<!-- 	<version>1.9.12</version> -->
-<!-- </dependency> -->
-<!--  		<dependency> -->
-<!-- 	<groupId>org.codehaus.jackson</groupId> -->
-<!-- 	<artifactId>jackson-mapper-asl</artifactId> -->
-<!-- 	<version>1.9.12</version> -->
-<!-- </dependency> -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.jaxrs</groupId>
+			<artifactId>jackson-jaxrs-base</artifactId>
+			<version>${jackson-2-version}</version>
+		</dependency>
+
 
 	</dependencies>
 
