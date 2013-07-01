@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 import org.woox.photoservice.model.Photo;
 
 @Service
-public class PhotoServiceImpl  {
+public class PhotoServiceImpl implements PhotoService {
 
 	public Photo getPhoto() {
 		Photo myPhoto = new Photo();

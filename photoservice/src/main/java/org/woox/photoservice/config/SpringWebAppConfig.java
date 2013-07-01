@@ -11,13 +11,15 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.DependsOn;
 import org.woox.photoservice.PhotoServiceApplication;
+import org.woox.photoservice.service.PhotoService;
 import org.woox.photoservice.service.PhotoServiceImpl;
 import org.woox.photoservice.webservice.PhotoServiceWS;
 
 import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
 
+
 @Configuration
-public class WebApplicationConfig {
+public class SpringWebAppConfig {
 	@Bean
 	public PhotoServiceApplication photoServiceApplication() {
 		return new PhotoServiceApplication();
@@ -35,10 +37,6 @@ public class WebApplicationConfig {
 		factory.setServiceBeans(Arrays.<Object> asList(photoServiceWS()));
 		factory.setAddress(factory.getAddress());
 		factory.setProviders(Arrays.<Object> asList(jsonProvider()));
-//		 Map<Object, Object> extensionsMap   = new HashMap<Object, Object>();
-//	      extensionsMap.put("json", MediaType.APPLICATION_JSON);
-//	       extensionsMap.put("xml",MediaType.TEXT_XML);
-//		factory.setExtensionMappings(extensionsMap		);
 		return factory.create();
 	}
 	
@@ -54,7 +52,7 @@ public class WebApplicationConfig {
 	}
 
 	@Bean
-	public PhotoServiceImpl photoService() {
+	public PhotoService photoService() {
 		return new PhotoServiceImpl();
 	}
 
