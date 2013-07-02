@@ -1,5 +1,7 @@
 package org.woox.photoservice.webservice;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -19,8 +21,8 @@ public class PhotoServiceWS {
 	@Produces({MediaType.APPLICATION_JSON})
 	@GET
 	@Path("/get")
-	public Photo getPhoto() {
-		return photoService.getPhoto();
+	public List<Photo> getPhoto() {
+		return photoService.getPhotos();
 	}
 
 

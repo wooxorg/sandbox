@@ -14,6 +14,7 @@ import org.springframework.data.mongodb.MongoDbFactory;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.SimpleMongoDbFactory;
 import org.woox.photoservice.PhotoServiceApplication;
+import org.woox.photoservice.repository.PhotoRepositoryImpl;
 import org.woox.photoservice.service.PhotoService;
 import org.woox.photoservice.service.PhotoServiceImpl;
 import org.woox.photoservice.webservice.PhotoServiceWS;
@@ -69,6 +70,11 @@ public class SpringWebAppConfig {
 	MongoTemplate mongoTemplate() throws Exception {
 		MongoTemplate mongoTemplate = new MongoTemplate(mongoDbFactory());
 		return mongoTemplate;
+	}
+	
+	@Bean
+	public PhotoRepositoryImpl photoRepository() {
+		return new PhotoRepositoryImpl();
 	}
 
 }
