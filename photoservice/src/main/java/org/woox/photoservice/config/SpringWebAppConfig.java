@@ -15,9 +15,9 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.SimpleMongoDbFactory;
 import org.woox.photoservice.PhotoServiceApplication;
 import org.woox.photoservice.repository.PhotoRepositoryImpl;
+import org.woox.photoservice.service.IPhotoService;
 import org.woox.photoservice.service.PhotoService;
-import org.woox.photoservice.service.PhotoServiceImpl;
-import org.woox.photoservice.webservice.PhotoServiceWS;
+
 
 import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
 import com.mongodb.MongoClient;
@@ -40,25 +40,26 @@ public class SpringWebAppConfig {
 		JAXRSServerFactoryBean factory = RuntimeDelegate.getInstance()
 				.createEndpoint(photoServiceApplication(),
 						JAXRSServerFactoryBean.class);
-		factory.setServiceBeans(Arrays.<Object> asList(photoServiceWS()));
+		factory.setServiceBeans(Arrays.<Object> asList(photoService()));
 		factory.setAddress(factory.getAddress());
 		factory.setProviders(Arrays.<Object> asList(jsonProvider()));
 		return factory.create();
 	}
 
+	
 	@Bean
 	public JacksonJsonProvider jsonProvider() {
 		return new JacksonJsonProvider();
 	}
 
-	@Bean
-	public PhotoServiceWS photoServiceWS() {
-		return new PhotoServiceWS();
-	}
+//	@Bean
+//	public PhotoServiceWS photoServiceWS() {
+//		return new PhotoServiceWS();
+//	}
 
 	@Bean
-	public PhotoService photoService() {
-		return new PhotoServiceImpl();
+	public IPhotoService photoService() {
+		return new PhotoService();
 	}
 
 	public @Bean

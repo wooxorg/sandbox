@@ -11,7 +11,7 @@
 		<spring.version>3.2.3.RELEASE</spring.version>
 		<hibernate.version>4.2.2.Final</hibernate.version>
 		<jackson-2-version>2.2.2</jackson-2-version>
-		<cxf.version>2.7.6-SNAPSHOT</cxf.version>
+		<cxf.version>2.7.5</cxf.version>
 		<spring-data-mongodb-version>1.2.1.RELEASE</spring-data-mongodb-version>
 		<jetty.version>9.0.3.v20130506</jetty.version>
 	</properties>

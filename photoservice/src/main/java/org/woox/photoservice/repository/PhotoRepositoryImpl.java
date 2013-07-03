@@ -17,7 +17,7 @@ public class PhotoRepositoryImpl {
 	@Inject
 	private MongoTemplate mongoTemplate;
 
-	public static final String COLLECTION_NAME = "photo";
+	//public static final String COLLECTION_NAME = "photo";
 
 	public void addPhoto(Photo photo) {
 		if (!mongoTemplate.collectionExists(Photo.class)) {
@@ -25,20 +25,24 @@ public class PhotoRepositoryImpl {
 		}
 		photo.setId(UUID.randomUUID().toString());
 
-		mongoTemplate.insert(photo, COLLECTION_NAME);
+		//mongoTemplate.insert(photo, COLLECTION_NAME);
+		mongoTemplate.insert(photo);
 	}
 
 	public List<Photo> listPhoto() {
-		return mongoTemplate.findAll(Photo.class, COLLECTION_NAME);
+		//return mongoTemplate.findAll(Photo.class, COLLECTION_NAME);
+		return mongoTemplate.findAll(Photo.class);
 	}
 
 
 	public void deletePhoto(Photo photo) {
-		mongoTemplate.remove(photo, COLLECTION_NAME);
+		//mongoTemplate.remove(photo, COLLECTION_NAME);
+		mongoTemplate.remove(photo);
 	}
 
 	public void updatePhoto(Photo photo) {
-		mongoTemplate.insert(photo, COLLECTION_NAME);
+		//mongoTemplate.insert(photo, COLLECTION_NAME);
+		mongoTemplate.insert(photo);
 	}
 	
 	//TODO verify 
